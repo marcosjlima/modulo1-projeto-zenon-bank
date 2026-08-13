@@ -1,3 +1,4 @@
+import br.com.zenon.fraud.Service.FraudAnalyzer;
 import br.com.zenon.fraud.Service.TransactionIngestor;
 import br.com.zenon.fraud.Transaction;
 import br.com.zenon.fraud.TransactionCustomer;
@@ -20,5 +21,25 @@ public class Main {
 
         List<Transaction> transactions2 = service.read("data/paysim_with_bad_data.csv");
         transactions2.forEach(IO::println);
+
+        FraudAnalyzer fraudAnalyzer = new FraudAnalyzer();
+        var countTotal = fraudAnalyzer.countTotalFraud();
+        IO.println(countTotal);
+
+        var topHighestValueFrauds = fraudAnalyzer.findTopHighestValueFrauds(3);
+        topHighestValueFrauds.stream().map(Transaction::amount).forEach(IO::println);
+
+        var topSuspiciousClients = fraudAnalyzer.findTopSuspiciousClients(5);
+
+        topSuspiciousClients.forEach(IO::println);
+
+        var totalFraudLoss = fraudAnalyzer.calculateTotalFraudLoss();
+
+        IO.println(totalFraudLoss);
+
+        var totalFraudByType = fraudAnalyzer.countTotalFraudByType();
+
+        IO.println(totalFraudByType);
+
     }
 }

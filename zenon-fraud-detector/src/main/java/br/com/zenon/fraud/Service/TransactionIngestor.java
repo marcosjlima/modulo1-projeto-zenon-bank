@@ -20,7 +20,7 @@ public class TransactionIngestor {
 
             return lines.stream()
                     .skip(1)
-                    .limit(1000)
+                    .limit(50000)
                     .map(this::parseTransaction)
                     .filter(Optional::isPresent)
                     .map(Optional::get)
