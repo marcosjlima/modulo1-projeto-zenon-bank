@@ -1,8 +1,10 @@
+import br.com.zenon.fraud.Service.TransactionIngestor;
 import br.com.zenon.fraud.Transaction;
 import br.com.zenon.fraud.TransactionCustomer;
 import br.com.zenon.fraud.TransactionType;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Main {
     void main() {
@@ -12,5 +14,8 @@ public class Main {
         IO.println(t1);
         IO.println(t2);
 
+        TransactionIngestor service = new TransactionIngestor();
+        List<Transaction> transactions2 = service.read("data/PS_20174392719_1491204439457_log.csv");
+        transactions2.stream().limit(10).forEach(IO::println);
     }
 }
