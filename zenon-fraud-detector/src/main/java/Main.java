@@ -15,7 +15,10 @@ public class Main {
         IO.println(t2);
 
         TransactionIngestor service = new TransactionIngestor();
-        List<Transaction> transactions2 = service.read("data/PS_20174392719_1491204439457_log.csv");
-        transactions2.stream().limit(10).forEach(IO::println);
+        List<Transaction> transactions1 = service.read("data/PS_20174392719_1491204439457_log.csv");
+        transactions1.stream().limit(10).forEach(IO::println);
+
+        List<Transaction> transactions2 = service.read("data/paysim_with_bad_data.csv");
+        transactions2.forEach(IO::println);
     }
 }
