@@ -14,9 +14,8 @@ import java.util.stream.Stream;
 public class FraudAnalyzer {
     List<Transaction> transactions = new ArrayList<>();
 
-    public FraudAnalyzer() {
-        TransactionIngestor service = new TransactionIngestor();
-        transactions = service.read("data/PS_20174392719_1491204439457_log.csv");
+    public FraudAnalyzer(List<Transaction> transactions) {
+        transactions = transactions;
     }
 
     public long countTotalFraud() {
